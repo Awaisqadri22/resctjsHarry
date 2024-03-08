@@ -11,13 +11,17 @@ export default function TextForm(props) {
     setText(newText);
   };
 
+  const handleLoClick = () => {
+    let newText = text.toLowerCase();
+    setText(newText);
+  };
   const [text, setText] = useState();
 
   return (
     <>
       <div className="container">
         <div className="form-group ">
-          <h1 for="exampleInputEmail1">{props.heading}</h1>
+          <h3 for="exampleInputEmail1">{props.heading}</h3>
           <textarea
             onChange={handleChange}
             value={text}
@@ -32,11 +36,29 @@ export default function TextForm(props) {
         <button
           style={{ marginTop: "20px" }}
           type="submit"
-          className="btn btn-primary"
+          className="btn btn-primary mx-2"
           onClick={handleUpClick}
         >
-          Submit
+          To Upper Case
         </button>
+
+        <button
+          style={{ marginTop: "20px" }}
+          type="submit"
+          className="btn btn-primary"
+          onClick={handleLoClick}
+        >
+          To Lower case
+        </button>
+      </div>
+      <div className="container my-3">
+        <h3>Your Text Summary</h3>
+        <p>
+          {" "}
+          {/* {text.split(" ").length} words and {text.length} characters */}
+        </p>
+        <h3>Preview</h3>
+        {text}
       </div>
     </>
   );
